@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ViewEncapsulation} from '@angular/core';
 import './rxjs-extensions';
 
 @Component({
@@ -9,7 +10,8 @@ import './rxjs-extensions';
                 <a routerLink="/midwives" routerLinkActive="active">Midwives</a>
               </nav>
               <router-outlet></router-outlet>`,
-  styleUrls: ['app.component.css']
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['../../public/css/app.component.scss']
 })
 
 export class AppComponent {

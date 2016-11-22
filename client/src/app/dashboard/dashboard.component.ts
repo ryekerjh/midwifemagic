@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Midwife } from '../midwives/midwife';
 import { MidwifeService } from '../midwives/midwife.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'dashboard',
   templateUrl: 'dashboard.component.html',
   moduleId: 'module.id',
-  styleUrls: ['dashboard.component.css']
+  styleUrls: ['dashboard.component.scss']
 })
 
 export class DashboardComponent implements OnInit {
