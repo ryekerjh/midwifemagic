@@ -1,5 +1,6 @@
-.DS_Store/
+.DS_Store
 /.DS_Store
-**.DS_Store/
+**/.DS_Store
 .env
 **/config
+client/.DS_Store
