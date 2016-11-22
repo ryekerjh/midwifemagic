@@ -1,0 +1,20 @@
+<ul class="heroes">
+  <li *ngFor="let midwife of midwives" 
+      [class.selected]="midwife === selectedMidwife"
+      (click)="onSelect(midwife)">
+      <span class="badge">{{midwife.id}}</span> {{midwife.name}} 
+      <button class="delete" (click)="delete(midwife); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div>
+  <label>Midwife name:</label> <input #midwifeName />
+  <button (click)="add(midwifeName.value); midwifeName.value=''">
+    Add
+  </button>
+</div>
+<div *ngIf="selectedMidwife">
+  <h2>
+      {{selectedMidwife.name | uppercase}} is my Midwife
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
