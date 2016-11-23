@@ -1,0 +1,28 @@
+{
+  "name": "midwifery",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "Ryeker Herndon",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.10.2"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "busboy": "^0.2.13",
+    "express": "^4.14.0",
+    "express-busboy": "^4.0.0",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.16.4",
+    "method-override": "^2.3.6",
+    "moment": "^2.15.1",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.5",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.8"
+  }
+}

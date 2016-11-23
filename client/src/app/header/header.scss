@@ -1,35 +1,44 @@
+@import '../../../public/css/app.scss';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: absolute;
   padding: 0 8px;
   top: 0;
   left: 0;
   right: 0;
-  background: #D95CFF;
+  background: $base-color;
   color: #fff;
-  height: 54px;
-}
+  height: 64px;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    .nav-tabs {
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0 8px;
+        &:hover {
+          background-color: transparent;
+          color: $accent-color !important;
+        }
+        &:focus, &:visited {
+          color: #fff;
+        }
+      }
+    ul {
+      display: inline-block;
+      list-style-type: none;
+    }
 
-a {
-  &:hover {
-    color: #F5D6FF;
+    li {
+      background: transparent;
+      color: #fff;
+      float: left
+    }
   }
-  &:hover, &:focus, &:visited {
-    text-decoration: none;
-    background-color: transparent;
-    color: #fff;
-  }
-}
-
-ul {
-  display: inline-block;
-  list-style-type: none;
-}
-
-li {
-  background: transparent;
-  color: #fff;
-  float: left
 }

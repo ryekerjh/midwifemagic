@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import {ViewEncapsulation} from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
 import './rxjs-extensions';
+
 
 @Component({
   selector: 'my-app',
-  template:  `<h1>{{title}}</h1>
-              <nav>
+  template:  `<header></header>
+              <h1>{{title}}</h1>
+              <div class="route-nav">
                 <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
                 <a routerLink="/midwives" routerLinkActive="active">Midwives</a>
-              </nav>
+              </div>
               <router-outlet></router-outlet>`,
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['../../public/css/app.component.scss']
+  styleUrls: ['./app.component.scss']
 })
 
 export class AppComponent {
