@@ -1,0 +1,13 @@
+<div *ngIf="midwife"> 
+  <div>
+      <label>name: </label> {{midwife.firstName}}
+      <label>id: </label> {{midwife._id}}
+  </div>
+  <div>
+      <label>name: </label>
+      <input [(ngModel)]="midwife.name" placeholder="name">
+  </div>
+</div>
+<button (click)="goBack()">Back</button>
+<button (click)="save()">Save</button>
+  

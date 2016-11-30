@@ -1,11 +1,7 @@
 @import '../../../public/css/app.scss';
 
-.container {
-  position: absolute;
+.container-fluid {
   padding: 0 8px;
-  top: 0;
-  left: 0;
-  right: 0;
   background: $base-color;
   color: #fff;
   height: 64px;
@@ -15,7 +11,7 @@
     justify-content: space-between;
     width: 100%;
     height: 64px;
-    .nav-tabs {
+    .nav-links {
       margin: 0;
     }
     a {
@@ -38,7 +34,15 @@
     li {
       background: transparent;
       color: #fff;
-      float: left
+      float: left;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &:hover {
+        background-color: #152028;
+        color: $accent-color;
+      }
     }
   }
 }

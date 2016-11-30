@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
 import { Midwife } from './midwife';
 import { MidwifeService } from './midwife.service';
 
@@ -9,24 +8,28 @@ import { MidwifeService } from './midwife.service';
     moduleId: 'module.id',
     selector: 'my-midwives',
     providers: [MidwifeService],
-    templateUrl: 'midwife.component.html',
-    styleUrls: ['midwife.component.css']
+    templateUrl: './midwife.component.html',
+    styleUrls: ['./midwife.component.scss']
 })
 
 export class MidwivesComponent implements OnInit {
     midwives : Midwife[];
     selectedMidwife : Midwife;
+    mode = 'Observable';
+    errorMessage: string;
+
     
     constructor(
         private router: Router,
-        private midwifeService: MidwifeService
+        private midwifeService: MidwifeService,
         ) { }
     
-    getMidwives(): void {
-    this.midwifeService.getMidwives()
-        .then(midwives => 
-            this.midwives = midwives
-            );
+    getMidwives() {
+      this.midwifeService.getMidwives()
+        .subscribe(
+           midwives => this.midwives = midwives,
+              error =>  this.errorMessage = <any>error
+        )
     }
 
     ngOnInit(): void{
@@ -35,27 +38,23 @@ export class MidwivesComponent implements OnInit {
 
     onSelect(midwife: Midwife): void {
     this.selectedMidwife =  midwife;
-    // console.log(this.selectedMidwife);
+    console.log(this.midwives);
     }
 
     gotoDetail(): void {
-        this.router.navigate(['/detail', this.selectedMidwife.id]);
+        this.router.navigate(['/detail', this.selectedMidwife._id]);
     }
 
-    add(name: string): void {
-        name = name.trim();
-        if(!name) { return }
-        this.midwifeService.create(name)
-            .then(midwife => {
-                this.midwives.push(midwife);
-                console.log(this.midwives)
-                this.selectedMidwife = null;
-            })
+    addMidwife(midwife: Midwife): void {
+        this.midwifeService.addMidwife(midwife)
+            .subscribe(
+                midwife  => this.midwives.push(midwife),
+                error =>  this.errorMessage = <any>error);
     }
 
     delete(midwife: Midwife): void {
     this.midwifeService
-        .delete(midwife.id)
+        .delete(midwife._id)
         .then(() => {
             this.midwives = this.midwives.filter(h => h !== midwife);
             if(this.selectedMidwife === midwife) { this.selectedMidwife = null; }

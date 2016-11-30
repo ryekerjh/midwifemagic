@@ -1,22 +1,28 @@
+//Modules
 import { NgModule } from '@angular/core';
 import { RouterModule } from  '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+//Components
 import { AppComponent }  from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 import{ HeaderComponent } from './header/header.component';
-import{ MidwifeDetailComponent } from './midwives/midwife-detail.component';
+import{ MidwifeDetailComponent } from './midwives/details/midwife-detail.component';
 import { MidwivesComponent } from './midwives/midwives.component';
+import { MidwifeSearchComponent } from './midwives/search/midwife-search.component';
+//Services
 import { MidwifeService } from './midwives/midwife.service';
-import { MidwifeSearchComponent } from './midwives/midwife-search.component';
-
+import { ProviderService } from './provider/provider.service';
 
 //mock api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+
+//Global Variables
+import globals = require('./globals');
+
+// import * as _ from "lodash";
 
 
 
@@ -24,7 +30,6 @@ import { InMemoryDataService }  from './in-memory-data.service';
   imports: [ BrowserModule, 
             FormsModule, 
             HttpModule,
-            InMemoryWebApiModule.forRoot(InMemoryDataService),
             RouterModule.forRoot([
               {
                 path: '',
@@ -54,7 +59,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     MidwifeSearchComponent
     ],
     providers: [
-      MidwifeService
+      MidwifeService,
+      ProviderService
     ],
   bootstrap: [ AppComponent ]
 })
