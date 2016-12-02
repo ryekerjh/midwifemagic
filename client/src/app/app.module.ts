@@ -4,66 +4,47 @@ import { RouterModule } from  '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardRoutingModule } from './dashboard/dashboard.routing';
 //Components
 import { AppComponent }  from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import{ HeaderComponent } from './header/header.component';
 import{ MidwifeDetailComponent } from './midwives/details/midwife-detail.component';
 import { MidwivesComponent } from './midwives/midwives.component';
 import { MidwifeSearchComponent } from './midwives/search/midwife-search.component';
+import { ProviderComponent } from './provider/provider.component';
+import { ProviderDetailComponent } from './provider/detail/provider-detail.component';
 //Services
 import { MidwifeService } from './midwives/midwife.service';
 import { ProviderService } from './provider/provider.service';
 
-//mock api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-
 //Global Variables
 import globals = require('./globals');
-
-// import * as _ from "lodash";
-
+import { AppRoutingModule, routingComponents } from './app.routing';
 
 
 @NgModule({
   imports: [ BrowserModule, 
             FormsModule, 
             HttpModule,
-            RouterModule.forRoot([
-              {
-                path: '',
-                redirectTo: '/dashboard',
-                pathMatch: 'full'
-              },
-              {
-                path: 'midwives',
-                component: MidwivesComponent
-              },
-              {
-                path: 'dashboard',
-                component: DashboardComponent
-              },
-             {
-               path: 'detail/:id',
-               component: MidwifeDetailComponent
-             }
-            ]) 
-          ],
+            DashboardModule,
+            DashboardRoutingModule,
+            AppRoutingModule
+  ],
   declarations: [ 
-    AppComponent, 
-    HeaderComponent, 
-    MidwifeDetailComponent,
-    MidwivesComponent,
-    DashboardComponent,
-    MidwifeSearchComponent
+            AppComponent, 
+            HeaderComponent, 
+            MidwifeDetailComponent,
+            MidwivesComponent,
+            MidwifeSearchComponent,
+            ProviderComponent,
+            ProviderDetailComponent,
+            routingComponents,
     ],
     providers: [
-      MidwifeService,
-      ProviderService
+            MidwifeService,
+            ProviderService
     ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { 
-
-}
+export class AppModule { }

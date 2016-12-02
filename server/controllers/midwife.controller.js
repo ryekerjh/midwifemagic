@@ -5,14 +5,22 @@ var controller = module.exports = {},
   ObjectId = require('mongoose').Types.ObjectId;
 
 
-//Get All Notes
 controller.getAllMidwives = function(req, res) {
-  console.log('its not all dead');
   models.Midwife.find({}).exec(function(err, midwives) {
     console.log(err);
     console.log(midwives);
     res.send(midwives);
   });
+}
+
+controller.getOneMidwife = function(req, res) {
+  models.Midwife.findOne({_id: req.params.id}).exec(function(err, midwife) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(midwife);
+    }
+  })
 }
 
 controller.createMidwife = function(req, res) {
@@ -24,6 +32,8 @@ controller.createMidwife = function(req, res) {
         email: midwife.email,
         phone: midwife.phone,
         insurance: midwife.insurance,
+        certification: midwife.certification,
+        providers: new Object(midwife.providers)
       })
   newMidwife.save(function (err) {
     if (err) {

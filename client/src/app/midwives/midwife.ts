@@ -1,3 +1,5 @@
+import { Provider } from '../provider/provider';
+
 export class Midwife {
     constructor(
     public _id: number,

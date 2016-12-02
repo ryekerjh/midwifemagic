@@ -15,6 +15,14 @@ module.exports = function(app) {
     router.route('/midwives')
       .get(controllers.midwife.getAllMidwives)
       .post(controllers.midwife.createMidwife)
+    router.route('/midwife/:id')
+      .get(controllers.midwife.getOneMidwife)
+
+    router.route('/providers')
+      .post(controllers.provider.createProvider)
+      .get(controllers.provider.getAllProviders)
+    router.route('/provider/:id')
+      .get(controllers.provider.getOneProvider)
 
     app.use('/api', router);
 }

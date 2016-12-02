@@ -1,0 +1,28 @@
+.provider-wrap {
+  ul {
+    padding-left: 0;
+    li {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 32px;
+      list-style-type: none;
+      height: 150px;
+      background: #5F8BAB;
+      color: #152529;
+      position: relative;
+      &:hover {
+        background: #152529;
+        color: #fff;
+        cursor: pointer;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+      }
+    }
+  }
+}

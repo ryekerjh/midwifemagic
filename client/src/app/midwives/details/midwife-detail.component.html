@@ -1,13 +1,15 @@
 <div *ngIf="midwife"> 
-  <div>
-      <label>name: </label> {{midwife.firstName}}
-      <label>id: </label> {{midwife._id}}
+  <div id="">
+      <span>Name: </span> {{midwife.firstName}} {{midwife.lastName}}
+      <span>Insurance: </span> {{midwife.insurance}}
+      <span>Email: </span> {{midwife.email}}
+      <span>Phone: </span> {{midwife.phone}}
   </div>
-  <div>
+  <!--<div>
       <label>name: </label>
-      <input [(ngModel)]="midwife.name" placeholder="name">
-  </div>
+      <input [(ngModel)]="midwife.name" placeholder="{{midwife.name}}">
+  </div>-->
 </div>
 <button (click)="goBack()">Back</button>
-<button (click)="save()">Save</button>
+<!--<button (click)="save()">Save</button>-->
   

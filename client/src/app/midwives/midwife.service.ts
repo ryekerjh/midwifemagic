@@ -1,13 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { Midwife } from './midwife';
-import { Headers, Http, Response, RequestOptions  } from '@angular/http';
+import { Headers, Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { apiUrl } from '../globals';
 
-import 'rxjs/add/operator/toPromise';
-
-import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { apiUrl } from '../globals';
+import * as _ from "lodash";
 
 
 
@@ -16,7 +15,6 @@ export class MidwifeService {
   
   //Define what to do with errors
    private handleError (error: Response | any) {
-          // In a real world app, we might use a remote logging infrastructure
           let errMsg: string;
           if (error instanceof Response) {
             const body = error.json() || '';
@@ -35,11 +33,20 @@ export class MidwifeService {
   getMidwives(): Observable<Midwife[]> {
     return this.http.get(apiUrl + 'midwives')
                 .map((response: Response) => <Midwife[]>response.json())
+                // .map(data => {
+                //     let num = Math.floor((Math.random() * 12) + 1);
+                //     _.each(data,(midwife) => {
+                //         midwife.RandomWidth = num
+                //     })
+                //     return data;
+                //   })
                 .catch(this.handleError);
      }
   
-  getMidwife(id: number): Observable<Midwife>{
-    return this.http.get(apiUrl + 'midwife', id)
+  getMidwife(id: any): Observable<Midwife>{
+    let params = new URLSearchParams();
+    params.set('body', id);
+    return this.http.get(apiUrl + 'midwife/' + id, { search: params })
                 .map((response: Response) => response.json())
                 .catch(this.handleError);
   }
@@ -53,15 +60,15 @@ export class MidwifeService {
   }
 
 
-  update(midwife: Midwife): Promise<Midwife> {
-    const url = `${apiUrl}/${midwife._id}`;
-      return this.http
-        .put(url, JSON.stringify(midwife), {headers: this.headers})
-        .toPromise()
-        .then(() => midwife)
-        .catch(this.handleError)
+  // update(midwife: Midwife): Promise<Midwife> {
+  //   const url = `${apiUrl}/${midwife._id}`;
+  //     return this.http
+  //       .put(url, JSON.stringify(midwife), {headers: this.headers})
+  //       .toPromise()
+  //       .then(() => midwife)
+  //       .catch(this.handleError)
 
-  }
+  // }
 
   // create(midwife: any): Observable<Midwife> {
   //   return this.http
@@ -71,12 +78,12 @@ export class MidwifeService {
   //     .catch(this.handleError);
   // }
 
-  delete(id:number): Promise<void> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError)
-  }
+  // delete(id:number): Promise<void> {
+  //   const url = `${apiUrl}/${id}`;
+  //   return this.http.delete(url, {headers: this.headers})
+  //     .toPromise()
+  //     .then(() => null)
+  //     .catch(this.handleError)
+  // }
 }
 

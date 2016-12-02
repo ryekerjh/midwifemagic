@@ -29,20 +29,20 @@ export class DashboardComponent implements OnInit {
   getMidwives() {
     this.midwifeService.getMidwives()
     .subscribe(
-        data => this.midwives = data,
+        data => this.midwives = data.slice(1,5),
         error => this.errorMessage = <any>error,
     )
   }
 
   addMidwife(midwife: Midwife): void {
     this.midwifeService.addMidwife(midwife)
-        .subscribe(
-            midwife  => this.midwives.push(midwife),
-            error =>  this.errorMessage = <any>error);
+      .subscribe(
+        midwife  => this.midwives.push(midwife),
+        error =>  this.errorMessage = <any>error);
   }
 
-  gotoDetail(midwife: Midwife):void { 
-    let link = ['/detail', midwife._id];
+  gotoDetail(id: number):void { 
+    let link = ['/detail', id];
     this.router.navigate(link);
   }
 

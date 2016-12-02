@@ -2,5 +2,6 @@ module.exports = {
   Midwife: require('./midwife'),
   Certification: require('./certification'),
   User: require('./user'),
-  UserType: require('./userType')
+  UserType: require('./userType'),
+  Provider: require('./provider')
 };

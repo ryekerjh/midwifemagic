@@ -23,26 +23,34 @@ export class MidwifeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location
   ) { }
-
+  
   ngOnInit(): void {
-      // this.getMidwife(this.midwife._id)
+    this.route.params.forEach((params: any) => {
+      let id = params.id;
+      this.midwifeService.getMidwife(id)
+        .subscribe(
+          data => this.midwife = data,
+          error => this.errorMessage = <any>error,
+          () => console.log('data')
+      )
+    })
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  save():void {
-    this.midwifeService.update(this.midwife)
-      .then(() => this.goBack());
-  }
+  // save():void {
+  //   this.midwifeService.update(this.midwife)
+  //     .then(() => this.goBack());
+  // }
 
-  getMidwife(id:number) {
-  this.midwifeService.getMidwife(id)
-    .subscribe(
-        data => this.midwife = data,
-        error => this.errorMessage = <any>error,
-        () => console.log('data')
-    )
-  }
+  // getMidwife(id:number) {
+  // this.midwifeService.getMidwife(id)
+  //   .subscribe(
+  //       data => this.midwife = data,
+  //       error => this.errorMessage = <any>error,
+  //       () => console.log('data')
+  //   )
+  // }
 }

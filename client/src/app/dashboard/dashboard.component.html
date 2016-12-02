@@ -1,9 +1,10 @@
 <h3>Top Midwives</h3>
 <div class="grid grid-pad">
-  <div *ngFor="let midwife of midwives" (click)="gotoDetail(midwife._id)" class="col-xs-12 col-sm-{{midwife.RandomWidth}}">
-    <div class="module hero">
+  <div *ngFor="let midwife of midwives" class="col-xs-12 col-sm-4">
+    <div class="module hero" (click)="gotoDetail(midwife._id)">
       <h4>{{midwife.firstName}}</h4>
-      <p>{{midwife.certification}}</p>
+      <p>{{midwife.phone}}</p>
+      <p>{{midwife.email}}</p>
     </div>
   </div>
 </div>

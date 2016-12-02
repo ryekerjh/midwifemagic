@@ -1,0 +1,11 @@
+<div class="provider-wrap">
+  <ul>
+    <li *ngFor="let provider of providers" (click)="gotoDetail(provider._id)">
+      <div>
+        <h4>{{provider.name}}</h4>
+        <p>{{provider.address}}</p>
+        <p>{{provider.phone}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
