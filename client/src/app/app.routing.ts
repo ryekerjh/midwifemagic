@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';  
 import { Routes, RouterModule } from '@angular/router';  
 import { DashboardComponent } from './dashboard/dashboard.component';  
-import { MidwivesComponent } from './midwives/midwives.component';
-import { ProviderComponent } from './provider/provider.component';
-import { MidwifeDetailComponent } from './midwives/details/midwife-detail.component';
-import { ProviderDetailComponent } from './provider/detail/provider-detail.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+
+
+
 
 const routes: Routes = [  
-  { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
-  { path: 'midwives', component: MidwivesComponent },
-  { path: 'providers', component: ProviderComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: MidwifeDetailComponent},
-  { path: 'provider/detail/:id', component: ProviderDetailComponent}
+  { path: '', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent },
+ 
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -20,5 +21,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [MidwivesComponent, ProviderComponent];  
+export const routedComponents = [DashboardComponent];  

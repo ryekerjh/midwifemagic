@@ -23,7 +23,11 @@ export class MidwivesComponent implements OnInit {
         private router: Router,
         private midwifeService: MidwifeService,
         ) { }
-    
+
+    ngOnInit(): void{
+    this.getMidwives();
+    }
+
     getMidwives() {
       this.midwifeService.getMidwives()
         .subscribe(
@@ -32,14 +36,11 @@ export class MidwivesComponent implements OnInit {
         )
     }
 
-    ngOnInit(): void{
-    this.getMidwives();
-    }
 
-    onSelect(midwife: Midwife): void {
-    this.selectedMidwife =  midwife;
-    console.log(this.midwives);
-    }
+    // onSelect(midwife: Midwife): void {
+    // this.selectedMidwife =  midwife;
+    // console.log(this.midwives);
+    // }
 
     gotoDetail(): void {
         this.router.navigate(['/detail', this.selectedMidwife._id]);
@@ -52,14 +53,14 @@ export class MidwivesComponent implements OnInit {
                 error =>  this.errorMessage = <any>error);
     }
 
-    delete(midwife: Midwife): void {
-    this.midwifeService
-        .delete(midwife._id)
-        .then(() => {
-            this.midwives = this.midwives.filter(h => h !== midwife);
-            if(this.selectedMidwife === midwife) { this.selectedMidwife = null; }
-        });
-    }
+    // delete(midwife: Midwife): void {
+    // this.midwifeService
+    //     .delete(midwife._id)
+    //     .then(() => {
+    //         this.midwives = this.midwives.filter(h => h !== midwife);
+    //         if(this.selectedMidwife === midwife) { this.selectedMidwife = null; }
+    //     });
+    // }
  }
 
 

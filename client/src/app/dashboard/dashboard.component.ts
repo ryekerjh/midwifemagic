@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   }
 
   gotoDetail(id: number):void { 
-    let link = ['/detail', id];
+    let link = ['/midwife', id];
     this.router.navigate(link);
   }
 

@@ -1,12 +1,12 @@
 <ul class="heroes">
   <li *ngFor="let midwife of midwives" 
       [class.selected]="midwife === selectedMidwife"
-      (click)="onSelect(midwife)">
+      (click)="gotoDetail(midwife)">
       <div class="badge"></div> {{midwife.lastName}} 
       <button class="delete" (click)="delete(midwife); $event.stopPropagation()">x</button>
   </li>
 </ul>
-<form class="col-sm-8 col-sm-offset-2">
+<!--<form class="col-sm-8 col-sm-offset-2">
   <div class="row">
     <div class="flex-row">
       <div class="form-label-container">
@@ -50,7 +50,7 @@
   <button (click)="addMidwife(midwife); midwifeName.value=''">
     Add
   </button>
-</form>
+</form>-->
 <div *ngIf="selectedMidwife">
   <h2>
       {{selectedMidwife.firstName}} is my Midwife

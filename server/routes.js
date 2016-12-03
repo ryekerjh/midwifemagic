@@ -24,5 +24,11 @@ module.exports = function(app) {
     router.route('/provider/:id')
       .get(controllers.provider.getOneProvider)
 
+  //AUTH
+    router.route('/authenticate')
+      .post(controllers.user.authenticate)
+    router.route('/register')
+      .post(controllers.user.registerUser)
+
     app.use('/api', router);
 }

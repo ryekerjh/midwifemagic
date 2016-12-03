@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from  '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 //Components
 
@@ -16,7 +17,7 @@ import { ProviderService } from '../provider/provider.service';
 import globals = require('../globals');
 
 @NgModule({
-  imports: [RouterModule, BrowserModule, HttpModule],
+  imports: [RouterModule, BrowserModule, HttpModule, FormsModule],
   exports: [DashboardComponent, RouterModule, BrowserModule, HttpModule],
   declarations: [DashboardComponent]
 })

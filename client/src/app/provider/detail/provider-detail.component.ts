@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 
 
 @Component({
-  selector: 'provider-detail',
+  // selector: 'provider-detail',
   templateUrl: 'provider-detail.component.html',
   styleUrls: ['provider-detail.component.scss']
 })

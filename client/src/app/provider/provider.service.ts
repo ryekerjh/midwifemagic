@@ -4,7 +4,6 @@ import { Headers, Http, Response, RequestOptions, URLSearchParams } from '@angul
 import { Observable } from 'rxjs/Rx';
 import { apiUrl } from '../globals';
 
-// import 'rxjs/add/operator/toPromise';
 
 export class ProviderService {
   constructor(@Inject(Http) private http: Http) { }

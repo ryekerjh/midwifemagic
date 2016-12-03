@@ -1,10 +1,9 @@
 {
   "name": "midwifery",
   "version": "0.0.1",
-  "description": "",
+  "description": "Connecting Midwives, Providers, and mothers",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Ryeker Herndon",
   "license": "ISC",
   "devDependencies": {
@@ -21,7 +20,7 @@
     "method-override": "^2.3.6",
     "moment": "^2.15.1",
     "mongodb": "^2.2.10",
-    "mongoose": "^4.6.5",
+    "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
     "socket.io": "^1.4.8"
   }

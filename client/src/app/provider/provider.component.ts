@@ -36,9 +36,8 @@ export class ProviderComponent implements OnInit {
     )
   }
 
-  gotoDetail(id: number):void { 
-    let link = '/provider/detail/' + id;
-    console.log(this.router.navigateByUrl(link));
-    this.router.navigateByUrl(link);
+  gotoDetail(id: any):void { 
+    let link = ['/provider/detail/' + id];
+    this.router.navigate(link);
   }
 }
