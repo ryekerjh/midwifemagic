@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
  
 import { AuthenticationService } from '../services/authentication.service';
  
 @Component({
-    moduleId: module.id,
+    moduleId: 'module.id',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.scss']
 })
@@ -16,16 +16,18 @@ export class LoginComponent implements OnInit {
  
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService) { }
+        private authenticationService: AuthenticationService,
+        ) { }
  
     ngOnInit() {
         // reset login status
         this.authenticationService.logout();
+        
     }
  
     login() {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        this.authenticationService.login(this.model.email, this.model.password)
             .subscribe(result => {
                 if (result === true) {
                     // login successful
@@ -37,4 +39,5 @@ export class LoginComponent implements OnInit {
                 }
             });
     }
+
 }

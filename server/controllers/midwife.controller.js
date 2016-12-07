@@ -23,6 +23,23 @@ controller.getOneMidwife = function(req, res) {
   })
 }
 
+controller.getMyMidwife = function(req, res) {
+  let thisUser = req.query.id;
+  models.User.findOne({_id: thisUser}).populate('midwife').exec(function(err, user) {
+    if(user){
+      let myMidwife = user.midwife;
+      res.json({
+        midwife: myMidwife
+      })
+    } else if(err){
+      res.json({
+        message: "looks like you encountered error " + err,
+        error: err
+      })
+    }
+  })
+}
+
 controller.createMidwife = function(req, res) {
   console.log('req.body', req.body);
   var midwife = req.body;

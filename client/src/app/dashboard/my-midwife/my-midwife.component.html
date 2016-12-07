@@ -1,0 +1,9 @@
+ <div class="segment" *ngIf="midwife">
+    <h1>My Midwife</h1>
+    <h4>{{midwife.firstName}} {{midwife.lastName}} is my midwife</h4>
+    <p>{{midwife.email}}</p>
+    <p>{{midwife.phone}}</p>
+    <p *ngIf="midwife.insurance">{{midwife.insurance}}</p>
+    <p *ngIf="!midwife.insurance">No {{midwife.insurance}}</p>
+    <p></p>
+  </div>

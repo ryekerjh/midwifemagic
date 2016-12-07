@@ -1,59 +1,11 @@
-<ul class="heroes">
-  <li *ngFor="let midwife of midwives" 
-      [class.selected]="midwife === selectedMidwife"
-      (click)="gotoDetail(midwife)">
-      <div class="badge"></div> {{midwife.lastName}} 
-      <button class="delete" (click)="delete(midwife); $event.stopPropagation()">x</button>
-  </li>
-</ul>
-<!--<form class="col-sm-8 col-sm-offset-2">
-  <div class="row">
-    <div class="flex-row">
-      <div class="form-label-container">
-        <label>Midwife First Name:</label> 
-        <input name="#midwifeFirstName" [(ngModel)]="midwife.firstName"/>
-      </div>     
-      <div class="form-label-container">
-        <label>Midwife Last Name:</label> 
-        <input name="#midwifeLastName" [(ngModel)]="midwife.lastName" />
-      </div>
+<h3>Top Midwives</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let midwife of midwives" class="col-xs-12 col-sm-4">
+    <div class="module hero" (click)="gotoDetail(midwife._id)">
+      <h4>{{midwife.firstName}}</h4>
+      <p>{{midwife.phone}}</p>
+      <p>{{midwife.email}}</p>
     </div>
   </div>
-  <div class="row">
-    <div class="flex-row">
-      <div class="form-label-container">
-        <label>Midwife Certification:</label> 
-        <input type="select" name="#midwifeCertification" [(ngModel)]="midwife.certification" />
-      </div>
-      <div class="form-label-container">
-        <label>Midwife Email:</label> 
-        <input name="#midwifeEmail" [(ngModel)]="midwife.email"  />
-      </div>
-      <div class="form-label-container">
-        <label>Midwife Phone:</label> 
-        <input name="#midwifePhone" [(ngModel)]="midwife.phone"  />
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="flex-row">
-      <div class="form-label-container">
-        <label>Midwife Providers:</label> 
-        <input type="select" name="#midwifeProviders" [(ngModel)]="midwife.providers"  />
-      </div>
-      <div class="form-label-container">
-        <label>Midwife Insurance:</label> 
-        <input type="checkbox" name="#midwifeInsurance" [(ngModel)]="midwife.insurance"  />
-      </div>
-    </div>
-  </div>
-  <button (click)="addMidwife(midwife); midwifeName.value=''">
-    Add
-  </button>
-</form>-->
-<div *ngIf="selectedMidwife">
-  <h2>
-      {{selectedMidwife.firstName}} is my Midwife
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
 </div>
+<!--<midwife-search></midwife-search>-->

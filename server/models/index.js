@@ -3,5 +3,6 @@ module.exports = {
   Certification: require('./certification'),
   User: require('./user'),
   UserType: require('./userType'),
-  Provider: require('./provider')
+  Provider: require('./provider'),
+  Event: require('./event')
 };

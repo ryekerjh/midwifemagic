@@ -11,7 +11,10 @@ import * as _ from "lodash";
 
 
 export class MidwifeService {
-  constructor(@Inject(Http) private http: Http) { }
+  constructor(
+    @Inject(Http) 
+    private http: Http)
+     { }
   
   //Define what to do with errors
    private handleError (error: Response | any) {
@@ -59,6 +62,14 @@ export class MidwifeService {
                     .catch(this.handleError);
   }
 
+  getMyMidwife(): Observable<Midwife> {
+    let id = JSON.parse(localStorage.getItem('currentUser')).userId
+    let params = new URLSearchParams();
+    params.set('id', id);
+    return this.http.get(apiUrl + 'my-midwife', {search: params})
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
 
   // update(midwife: Midwife): Promise<Midwife> {
   //   const url = `${apiUrl}/${midwife._id}`;
@@ -68,14 +79,6 @@ export class MidwifeService {
   //       .then(() => midwife)
   //       .catch(this.handleError)
 
-  // }
-
-  // create(midwife: any): Observable<Midwife> {
-  //   return this.http
-  //     .post(apiUrl + 'midwives', JSON.stringify({name: name}), {headers: this.headers})
-  //     .toPromise()
-  //     .then(res => res.json().data)
-  //     .catch(this.handleError);
   // }
 
   // delete(id:number): Promise<void> {

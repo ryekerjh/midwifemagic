@@ -7,6 +7,7 @@ var schema = new mongoose.Schema ({
   email: String,
   password: {type: String, select: false},
   midwife: {type: mongoose.Schema.Types.ObjectId, ref: 'Midwife'},
+  schedule: [{type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
   createdAt: {type: Date, default: Date.new},
   updatedAt: {type: Date, default: Date.new}
 });

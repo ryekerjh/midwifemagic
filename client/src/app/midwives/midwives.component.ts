@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Midwife } from './midwife';
 import { MidwifeService } from './midwife.service';
+import * as _ from "lodash";
 
 
 @Component({
-    moduleId: 'module.id',
     selector: 'my-midwives',
     providers: [MidwifeService],
     templateUrl: './midwife.component.html',
@@ -17,7 +17,7 @@ export class MidwivesComponent implements OnInit {
     selectedMidwife : Midwife;
     mode = 'Observable';
     errorMessage: string;
-
+    ranImage: String;
     
     constructor(
         private router: Router,
@@ -52,6 +52,7 @@ export class MidwivesComponent implements OnInit {
                 midwife  => this.midwives.push(midwife),
                 error =>  this.errorMessage = <any>error);
     }
+    
 
     // delete(midwife: Midwife): void {
     // this.midwifeService

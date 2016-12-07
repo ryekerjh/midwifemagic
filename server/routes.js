@@ -11,24 +11,37 @@ module.exports = function(app) {
     console.log('hey buddy im on it!');
   })
 
-
+//MIDWIFE ROUTES
     router.route('/midwives')
       .get(controllers.midwife.getAllMidwives)
       .post(controllers.midwife.createMidwife)
     router.route('/midwife/:id')
       .get(controllers.midwife.getOneMidwife)
+    router.route('/my-midwife')
+      .get(controllers.midwife.getMyMidwife)
 
+//PROVIDER ROUTES
     router.route('/providers')
       .post(controllers.provider.createProvider)
       .get(controllers.provider.getAllProviders)
     router.route('/provider/:id')
       .get(controllers.provider.getOneProvider)
 
-  //AUTH
+//USERTYPE
+    router.route('/user-type')
+      .post(controllers.userType.createUserType)
+
+//AUTH
     router.route('/authenticate')
       .post(controllers.user.authenticate)
     router.route('/register')
       .post(controllers.user.registerUser)
 
+//SCHEDULE
+    router.route('/schedule')
+      .get(controllers.event.getMySchedule)
+      .post(controllers.event.createEvent)
+
+
     app.use('/api', router);
-}
+}    

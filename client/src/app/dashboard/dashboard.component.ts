@@ -2,18 +2,20 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Midwife } from '../midwives/midwife';
 import { MidwifeService } from '../midwives/midwife.service';
+import { ScheduleService } from './services/schedule.service';
 import {Observable} from 'rxjs/Rx';
 import * as _ from "lodash";
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  moduleId: 'module.id'
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.scss'],
+  providers: [ScheduleService]
 })
 
 export class DashboardComponent implements OnInit {
   midwives: Midwife[];
+  midwife: Midwife;
   errorMessage: string;
 
   
@@ -23,7 +25,6 @@ export class DashboardComponent implements OnInit {
   ) {  }
   
   ngOnInit(): void {
-     this.getMidwives();
     }
 
   getMidwives() {
@@ -47,7 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    console.log(this.midwives)
+    console.log(this.midwife);
   }
 
  }

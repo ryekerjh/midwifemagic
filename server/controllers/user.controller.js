@@ -1,16 +1,16 @@
 var controller = module.exports = {},
-    models = require('../models'),
-    mongoose = require('mongoose'),
-    config = require('../config');
-    jwt = require('jsonwebtoken'),
-    bcrypt = require('bcrypt-nodejs'),
-    ObjectId = require('mongoose').Types.ObjectId;
+  models = require('../models'),
+  mongoose = require('mongoose'),
+  config = require('../config');
+  jwt = require('jsonwebtoken'),
+  bcrypt = require('bcrypt-nodejs'),
+  ObjectId = require('mongoose').Types.ObjectId;
 
 controller.authenticate = function(req, res) {
   console.log(req.body)
-  models.User.findOne({email: req.body.user.email}).select('+password').exec(function(err, user) {
+  models.User.findOne({email: req.body.email}).select('+password').exec(function(err, user) {
     if (user) {
-      bcrypt.compare(req.body.user.password, user.password, function(err, response) {
+      bcrypt.compare(req.body.password, user.password, function(err, response) {
         if (response) {
           var token = jwt.sign({email: user.email, _id: user._id, firstName: user.firstName, lastName: user.lastName}, config.JWT_SECRET);
           models.User.update({_id: user._id}, { $set: {loginToken: token} }, {}, function(err, users) {
@@ -18,6 +18,7 @@ controller.authenticate = function(req, res) {
               res.json({
                 message: 'authenticated',
                 token: token,
+                user: user
               });
             } else {
               res.json({

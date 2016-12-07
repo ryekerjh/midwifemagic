@@ -9,13 +9,6 @@ import { AuthGuard } from '../guards/auth.guard';
 const  midwifeRoutes: Routes = [  
     { path: 'midwives', component: MidwivesComponent, canActivate: [AuthGuard]},
     { path: 'midwife/:id', component: MidwifeDetailComponent, canActivate: [AuthGuard]}
-
 ];
 
-@NgModule({
-  imports: [RouterModule.forChild(midwifeRoutes)],
-  exports: [RouterModule]
-})
-export class MidwifeRoutingModule { }
-
-export const routedComponents = [MidwivesComponent, MidwifeDetailComponent];  
+export const MidwifeRouter = RouterModule.forChild(midwifeRoutes);

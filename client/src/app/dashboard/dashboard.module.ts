@@ -1,13 +1,14 @@
 //Modules
 import { NgModule } from '@angular/core';
-import { RouterModule } from  '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { DashboardRouter } from './dashboard.router';
 
 //Components
-
 import { DashboardComponent } from './dashboard.component';
+import { MyMidwifeComponent } from './my-midwife/my-midwife.component';
+import { MyScheduleComponent } from './my-schedule/my-schedule.component';
 
 //Services
 import { MidwifeService } from '../midwives/midwife.service';
@@ -17,8 +18,7 @@ import { ProviderService } from '../provider/provider.service';
 import globals = require('../globals');
 
 @NgModule({
-  imports: [RouterModule, BrowserModule, HttpModule, FormsModule],
-  exports: [DashboardComponent, RouterModule, BrowserModule, HttpModule],
-  declarations: [DashboardComponent]
+  imports: [HttpModule, FormsModule, DashboardRouter, CommonModule],
+  declarations: [DashboardComponent, MyMidwifeComponent, MyScheduleComponent]
 })
 export class DashboardModule { }  
